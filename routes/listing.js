@@ -61,11 +61,17 @@ router.get("/:id/edit", wrapAsync(async(req,res)=>{
 }))
 
 // update route
-router.put("/:id",validateListing, wrapAsync(async(req,res)=>{
-    let {id} = req.params;
-   await Listing.findByIdAndUpdate(id,{...req.body.listing});
-    res.redirect(`/listings/${id}`);
-}))
+// router.put("/:id",validateListing, wrapAsync(async(req,res)=>{
+//     let {id} = req.params;
+//    await Listing.findByIdAndUpdate(id,{...req.body.listing});
+//     res.redirect(`/listings/${id}`);
+// }))
+router.put("/:id", validateListing, wrapAsync(async (req, res) => {
+  console.log(req.body); // 👈 Check structure here
+  const { id } = req.params;
+  await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+  res.redirect(`/listings/${id}`);
+}));
 
 //Delete route
 router.delete("/:id", wrapAsync(async(req,res)=>{

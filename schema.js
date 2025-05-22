@@ -20,7 +20,7 @@
 //     }).required()
 
 // })
-const Joi = require("joi");
+
 
 // // Listing Schema
 // const listingSchema = Joi.object({
@@ -49,17 +49,32 @@ const Joi = require("joi");
 //   }).required()
 // });
 
+const Joi = require("joi");
+
+// const listingSchema = Joi.object({
+//   listing: Joi.object({
+//     title: Joi.string().required(),
+//     description: Joi.string().required(),
+//     location: Joi.string().required(),
+//     price: Joi.number().min(0).required(),
+//     image: Joi.string(),
+//     country: Joi.string().required()
+//   }).required()
+// });
+
 const listingSchema = Joi.object({
   listing: Joi.object({
     title: Joi.string().required(),
     description: Joi.string().required(),
     location: Joi.string().required(),
     price: Joi.number().min(0).required(),
-    image: Joi.string(),
+    image: Joi.object({
+  url: Joi.string().required()
+}).required(),
+
     country: Joi.string().required()
   }).required()
 });
-
 
 
 // Review Schema
