@@ -136,3 +136,12 @@ body{
 .card-text{
  margin-bottom: 0 !important;
 }
+.card .review-btn{
+    margin-bottom: 10px !important;
+    background-color: black !important;
+    color: white !important;
+    border: none !important;
+    padding: 5px 10px !important;
+    border-radius: 5px !important;
+    
+} 
