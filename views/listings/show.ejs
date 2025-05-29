@@ -6,14 +6,19 @@
     <div class="listing-card">
     <img src="<%= listing.image.url %>" class="card-img-top card_img" alt="listing_image">
   <div class="card-body">
-    <p class="card-text">
-        <%= listing.description %> <br>
-        <li>&#8377;<%= listing.price.toLocaleString("en-IN") %> </li>
-        <li> <%= listing.location %> </li>
-        <li> <%= listing.country %> </li>
-    </p>
+    
+     <p class="card-text">Owned by <i><%= listing.owner.username %></i></p>
+      <p class="card-text"><%= listing.description %> </p><br>
+      <p class="card-text"> <li>&#8377;<%= listing.price.toLocaleString("en-IN") %> </li></p>
+       <p class="card-text"> <li> <%= listing.location %> </li></p>
+      <p class="card-text">  <li> <%= listing.country %> </li> </p>
+    
   </div>
     </div>
+      <br/>
+
+
+    <%if(currUser && listing.owner._id.equals(currUser._id)){ %>
     <div class="btns">
     <a class="btn-a " href="/listings/<%= listing._id %>/edit">Edit</a>
     <br><br>
@@ -21,8 +26,12 @@
         <button class="mb-3 btn  btn-dark">Delete</button>
     </form>
   </div>
+  <%} %>
+
+  
   <div class="mb-3">
     <hr>
+    <%if(currUser){ %>
     <h4>Leave a Review</h4>
     <form action="/listings/<%= listing.id %>/reviews" novalidate class="needs-validation" method="Post" >
       <div class="mb-3">
@@ -37,6 +46,8 @@
       <button class="btn btn-outline-dark">Submit</button>
     </form>
     <hr>
+  <%} %>
+    
     <p>All Reviews</p>
     <div class="row mb-2">
      <% for(review of listing.reviews){%>
