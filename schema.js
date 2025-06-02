@@ -10,9 +10,9 @@ const listingSchema = Joi.object({
 //     image: Joi.object({
 //   url: Joi.string().required()
 // }).required(),
-image: Joi.object({
-  url: Joi.string().allow('').required()
-}).required(), 
+// image: Joi.object({
+//   url: Joi.string().allow('').required()
+// }).required(), 
 
 
     country: Joi.string().required()

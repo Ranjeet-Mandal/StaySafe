@@ -5,34 +5,32 @@ const wrapAsync = require("../utils/wrapAsync.js");
 const Listing = require("../models/listing");
 const { authenticate } = require("passport");
 const { isLoggedIn, isOwner, validateListing } = require("./middleware.js");
+const multer  = require('multer');
+const {storage} = require("../cloudConfig.js");
+const upload = multer({storage});
+
 
 const listingController = require("../controllers/listings.js");
 
-// Index route
-// router.get(
-//   "/",
-//   wrapAsync(async (req, res) => {
-//     const allListings = await Listing.find({});
-//     res.render("listings/index.ejs", { allListings });
-//   })
-// );
-
-//index route
-router.get("/", wrapAsync(listingController.index));
 
 // New Route
 router.get("/new", isLoggedIn, listingController.renderNewForm);
 
+
+
+router.route("/")
+.get( wrapAsync(listingController.index))
+.post(
+  isLoggedIn,upload.single("listing[image]"),validateListing,
+  wrapAsync(listingController.createListing)
+
+);
+
+
+
 // show route
 router.get("/:id", wrapAsync(listingController.showListing));
 
-// Create route
-router.post(
-  "/",
-  isLoggedIn,
-  validateListing,
-  wrapAsync(listingController.createListing)
-);
 
 // Edit route
 router.get(
