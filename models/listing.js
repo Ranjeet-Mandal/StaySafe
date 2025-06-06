@@ -26,6 +26,17 @@ const listingSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
+  goemetry:{
+    type: {
+      type: String,
+      enum: ["point"],
+      required: true,
+    },
+    cordinate: {
+      type: [Number],
+      required: true,
+    }
+  },
 });
 
 listingSchema.post("findOneAndDelete", async(listing)=>{
