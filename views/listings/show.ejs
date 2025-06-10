@@ -1,8 +1,8 @@
 <% layout("layouts/boilerplate") %>
-<script>
-  const mapToken = "<%= process.env.MAP_TOKEN %>";
+<!-- <script>
+  let mapToken = process.env.MAP_TOKEN;
   console.log(mapToken);
-</script>
+</script> -->
 
 <div class="row">
   <div class="col-8 offset-2">
@@ -56,30 +56,23 @@
       <% } %>
     </div>
 
-    <% if (listing.reviews.length > 0) { %>
-      <hr>
-      <div class="row mb-2">
-        <p>All Reviews</p>
-        <% for (review of listing.reviews) { %>
-          <div class="card col-5 ms-3 mb-3">
-            <div class="card-body mb-3">
-              <h5 class="card-title"><%= review.author.username %></h5>
-              <p class="card-text"><%= review.comment %></p>
-              <p class="starability-result card-text" data-rating="<%= review.rating %>"></p>
-            </div>
-            <form method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
-              <button class="review-btn btn-dark">Delete</button>
-            </form>
+    <hr>
+    <p>All Reviews</p>
+    <div class="row mb-2">
+      <% for (review of listing.reviews) { %>
+        <div class="card col-5 ms-3 mb-3">
+          <div class="card-body mb-3">
+            <h5 class="card-title"><%= review.author.username %></h5>
+            <p class="card-text"><%= review.comment %></p>
+            <p class="starability-result card-text" data-rating="<%= review.rating %>"></p>
           </div>
-        <% } %>
-      </div>
-    <% } %>
-
-    <div class=" col-8 offset-2 mb-3">
-      <h3>Where are you</h3>
-      <div id="map"></div>
+          <form method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
+            <button class="review-btn btn-dark">Delete</button>
+          </form>
+        </div>
+      <% } %>
     </div>
-  </div> 
-</div>
+  </div> <!-- ✅ closes .col-8.offset-2 -->
+</div> <!-- ✅ closes .row -->
 
-<script src="/js/map.js"> </script>
+<!-- <script src="/js/map.js"></script> -->

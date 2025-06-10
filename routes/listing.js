@@ -49,6 +49,15 @@ router.put(
   wrapAsync(listingController.updateListing)
 );
 
+// router.route("/")
+//   .get(wrapAsync(listingController.index))
+//   .post(
+//     isLoggedIn, 
+//     upload.single("listing[image]"),
+//     validateListing,
+//     wrapAsync(listingController.createListing)
+//   );
+
 //Delete route
 router.delete(
   "/:id",
@@ -58,3 +67,6 @@ router.delete(
 );
 
 module.exports = router;
+
+
+
