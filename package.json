@@ -2,7 +2,6 @@
   "engine": {
     "node": "22.14.0"
   },
-
   "name": "project",
   "version": "1.0.0",
   "main": "index.js",
@@ -22,6 +21,7 @@
     "dotenv": "^16.5.0",
     "ejs": "^3.1.10",
     "ejs-mate": "^4.0.0",
+    "env": "^0.0.2",
     "express": "^5.1.0",
     "express-session": "^1.18.1",
     "init": "^0.1.2",
